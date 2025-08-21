@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "Laptop Gamer ASUS",
+    "description": "Laptop de alto rendimiento con procesador Intel i7 y tarjeta gráfica RTX 3060.",
+    "code": "LAP001",
+    "price": 1500,
+    "status": true,
+    "stock": 10,
+    "category": "Tecnología",
+    "thumbnails": [
+      "https://example.com/images/laptop1.png",
+      "https://example.com/images/laptop1_2.png"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Smartphone Samsung Galaxy S24",
+    "description": "Teléfono de última generación con cámara de 200MP y pantalla AMOLED 120Hz.",
+    "code": "PHN002",
+    "price": 1200,
+    "status": true,
+    "stock": 25,
+    "category": "Celulares",
+    "thumbnails": [
+      "https://example.com/images/samsung1.png"
+    ]
+  },
+  {
+    "id": 4
+  }
+]
