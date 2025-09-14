@@ -1,0 +1,8 @@
+<h1>Lista de productos</h1>
+<ul>
+    {{#each products}}
+        <li>{{this.title}} - ${{this.price}}</li>
+    {{else}}
+        <li>No hay productos.</li>
+    {{/each}}
+</ul>
