@@ -4,28 +4,66 @@ import ProductManager from "../managers/ProductManager.js";
 const router = Router();
 const pm = new ProductManager();
 
-router.get("/", async (req, res) => res.json(await pm.getProducts()));
+// GET / - Con filtros, paginación y ordenamiento según la consigna
+router.get("/", async (req, res) => {
+    try {
+        const { limit, page, sort, query, category, availability } = req.query;
+        
+        const result = await pm.getProducts({
+            limit,
+            page,
+            sort,
+            query,
+            category,
+            availability
+        });
+        
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({
+            status: 'error',
+            message: error.message
+        });
+    }
+});
 
 router.get("/:pid", async (req, res) => {
-    const product = await pm.getProductById(Number(req.params.pid));
-    if (!product) return res.status(404).json({ error: "Porducto no encontrado"});
-    res.json(product);
+    try {
+        const product = await pm.getProductById(req.params.pid);
+        if (!product) return res.status(404).json({ error: "Producto no encontrado" });
+        res.json(product);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
 
 router.post("/", async (req, res) => {
-    const newProduct = await pm.addProduct(req.body);
-    res.status(201).json(newProduct);
+    try {
+        const newProduct = await pm.addProduct(req.body);
+        res.status(201).json(newProduct);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
 });
 
 router.put("/:pid", async (req, res) => {
-    const updated = await pm.updateProduct(Number(req.params.pid), req.body);
-    if (!updated) return res.status(404).json({ error: "Producto no encontrado"});
-    res.json(updated);
+    try {
+        const updated = await pm.updateProduct(req.params.pid, req.body);
+        if (!updated) return res.status(404).json({ error: "Producto no encontrado" });
+        res.json(updated);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
 });
 
 router.delete("/:pid", async (req, res) => {
-    await pm.deleteProduct(Number(req.params.pid));
-    res.json({ message: "Producto eleminado"});
+    try {
+        const deleted = await pm.deleteProduct(req.params.pid);
+        if (!deleted) return res.status(404).json({ error: "Producto no encontrado" });
+        res.json({ message: "Producto eliminado" });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
 
 export default router;

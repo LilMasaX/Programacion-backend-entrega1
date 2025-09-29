@@ -2,9 +2,93 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>{{title}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}} - E-commerce</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .header {
+            background: #2c5aa0;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .nav {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .nav a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .main-content {
+            min-height: calc(100vh - 140px);
+            padding: 20px 0;
+        }
+        
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: auto;
+        }
+    </style>
 </head>
 <body>
-    {{{body}}}
+    <header class="header">
+        <div class="header-content">
+            <a href="/" class="logo">E-commerce</a>
+            <nav class="nav">
+                <a href="/products">Productos</a>
+                <a href="/realtimeproducts">Productos en tiempo real</a>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="main-content">
+        {{{body}}}
+    </main>
+    
+    <footer class="footer">
+        <p>&copy; 2025 E-commerce. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>
